@@ -56,7 +56,6 @@ function Login() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(sigup.name, sigup.city, sigup.email, sigup.password)
         dispatch(signUpUser(sigup))
         handleClose()
         
@@ -64,7 +63,6 @@ function Login() {
 
     const handleLoginSubmit =(e) => {
         e.preventDefault()
-        console.log(login.email, login.password)
         dispatch(loginUser(login))
         handlelogClose()
         history.push('/dashboard')

@@ -6,9 +6,7 @@ const request = axios.create({
 });
 
 export const signUpUser = (state) => async (dispatch) => {
-    console.log(state)
     try{
-        // console.log(state)
         const response = await request.post('/signup', state);
         dispatch(signUp({users: response.data}))
     }
@@ -18,10 +16,8 @@ export const signUpUser = (state) => async (dispatch) => {
 }
 
 export const loginUser = (state) => async (dispatch) => {
-    console.log(state)
     try{
         const response = await request.post('/login', state);
-        console.log(response.data)
         axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`;
         localStorage.setItem("token", response.data.token)
         localStorage.setItem("name", response.data.result.name)
@@ -35,7 +31,6 @@ export const loginUser = (state) => async (dispatch) => {
  }
 
 export const location = (state) => async (dispatch) => {
-    console.log(state)
     try{
         const response = await request.get('/dashboard/weather', {
             params: {
@@ -45,7 +40,6 @@ export const location = (state) => async (dispatch) => {
             }
 
         });
-        console.log(response.data)
         dispatch(weather(response.data))
     }
     catch (err) {
@@ -55,7 +49,6 @@ export const location = (state) => async (dispatch) => {
 }
 
 export const cityWeather = (state) => async (dispatch) => {
-    console.log(state)
     try{
         const response = await request.get('/dashboard/city',{
             params:{
@@ -63,7 +56,6 @@ export const cityWeather = (state) => async (dispatch) => {
                 name: state.user
             }
         });
-        console.log(response.data)
         dispatch(weather_by_city(response.data))
     }
     catch (err) {
@@ -72,14 +64,12 @@ export const cityWeather = (state) => async (dispatch) => {
 }
 
 export const cityhistory = (state) => async (dispatch) => {
-    console.log(state)
     try{
         const response = await request.get('/history', {
             params: {
                 name: state.name
             }
         })
-        console.log(response.data)
         dispatch(city_history(response.data))
     }
     catch (err) {

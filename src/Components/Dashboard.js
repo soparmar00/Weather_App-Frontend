@@ -20,7 +20,6 @@ const Dashboard = () => {
     const userCity = useSelector((state) => state.Users.userCity)
 
     const [wcity, setWcity] = useState({user: name, city:''})
-    console.log(cityWeatherReport)
 
     const handleLogout = () => {
         localStorage.clear()
@@ -41,7 +40,6 @@ const Dashboard = () => {
 
 
     const handleWeather = () => {
-        console.log(lat, lon)
         dispatch(location({lat, lon, userCity}))
         
     }
@@ -53,7 +51,6 @@ const Dashboard = () => {
 
     const handleCitySubmit = (e) => {
         e.preventDefault()
-        console.log(wcity.city)
         dispatch(cityWeather(wcity))
     }
 

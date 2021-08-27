@@ -5,7 +5,6 @@ import { Route, Redirect } from 'react-router-dom';
 const PrivateRoute = (props) => {
 
     const token = useSelector((state) => state.Users.token)
-    console.log("auth", token)
 
     return token ? (
         <Route {...props} />
